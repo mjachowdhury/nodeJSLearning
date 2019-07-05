@@ -15,6 +15,8 @@ console.log(`setting a ${ waitTime / 1000} second delay`);
 
 const timerFinished = () => {
     clearInterval(interval);
+    process.stdout.clearLine();
+    process.stdout.cursorTo(0);
     console.log("Done");
 };
 const interval = setInterval(inncrementTime, waitInterval);
