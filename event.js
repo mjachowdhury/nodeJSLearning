@@ -9,6 +9,17 @@ emitter.on("customEvent", (message, user) => {
 
 });
 
+//this function will take user input from terminal for customEvent
+//here input as a message and terminal as a user
+process.stdin.on("data", data => {
+    const input = data.toString().trim();
+    if(input === "exit"){
+        emitter.emit("customEvent", "Goodbye!", "process");
+        process.exit();
+    }
+    emitter.emit("customEvent", input, "Terminal");
+});
+
 //these are custom events
-emitter.emit("customEvent", "As salamu alukum", "Computer");
-emitter.emit("customEvent", "That is prety cool", "Mohammed");
+//emitter.emit("customEvent", "As salamu alukum", "Computer");
+//emitter.emit("customEvent", "That is prety cool", "Mohammed");
